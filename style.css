@@ -1,0 +1,438 @@
+:root {
+    --main-color: cadetblue;
+    --white: white;
+    --transparent: transparent;
+    --font-size-small: 0.7rem;
+    --font-size-medium: 0.9rem;
+    --font-size-large: 2rem;
+  }
+  
+  * {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    height: 100vh;
+  }
+  
+  body {
+    background: var(--main-color);
+    background-blend-mode: screen;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+  
+  a,
+  button:focus {
+    outline: none;
+  }
+  
+  .card {
+    width: 500px;
+    min-height: 350px;
+  }
+  
+  .card,
+  .nextmodal {
+    background: rgba(255, 255, 255, 0.375);
+    box-shadow: 0 0.75em 2em 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    padding: 3em;
+    text-align: center;
+    -webkit-animation-name: animatepopup;
+    -webkit-animation-duration: 3s;
+    animation-name: animatepopup;
+    animation-duration: 3s;
+  }
+  
+  @keyframes animatepopup {
+    from {
+      transform: scale(0.2);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* input field */
+  
+  .input-field {
+    margin: 2em;
+    position: relative;
+    padding: 5px 20px;
+    line-height: 44px;
+  }
+  label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: var(--white);
+    transition: 0.2s all;
+    cursor: text;
+    text-align: left;
+    padding: 0px 20px;
+    font-size: var(--font-size-medium);
+  }
+  input {
+    background-color: transparent;
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: 5px 5px;
+    border-bottom: 2px solid var(--white);
+    box-shadow: none;
+    color: var(--white);
+    font-size: var(--font-size-medium);
+  }
+  input:invalid {
+    outline: 0;
+  }
+  input:focus,
+  input:valid {
+    border-color: var(--main-color);
+  }
+  input:focus ~ label,
+  input:valid ~ label {
+    top: -30px;
+    color: var(--main-color);
+    font-size: var(--font-size-small);
+  }
+  
+  .open {
+    visibility: hidden;
+  }
+  
+  /* svara knapparna */
+  
+  .submit,
+  .open {
+    font-size: var(--font-size-small);
+    color: var(--white);
+    padding: 15px 35px;
+    background: none;
+    border: none;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 3px;
+    cursor: pointer;
+  }
+  
+  .submit:after,
+  .submit:before,
+  .open:after,
+  .open:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border: 2px solid var(--white);
+    -webkit-transition: -webkit-transform 0.2s;
+    transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+    transition: transform 0.2s, -webkit-transform 0.2s;
+  }
+  
+  .submit:after,
+  .open:after {
+    -webkit-transform: translate(3px, 3px);
+    transform: translate(3px, 3px);
+  }
+  
+  .submit:before,
+  .open:before {
+    -webkit-transform: translate(-3px, -3px);
+    transform: translate(-3px, -3px);
+  }
+  
+  .submit:hover:after,
+  .submit:hover:before,
+  .open:hover:after,
+  .open:hover:before {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+  
+  /* andra popupen */
+  
+  .modals {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .nextmodal {
+    display: none;
+    width: 550px;
+    min-height: 300px;
+    padding: 3em;
+    overflow: hidden;
+  }
+  
+  /* tillbaka knappen */
+  
+  .arrow {
+    width: 15%;
+  }
+  
+  .custom-btn {
+    color: var(--white);
+    font-weight: bold;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    outline: none;
+  }
+  
+  .btn {
+    font-size: var(--font-size-small);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    border: none;
+  }
+  
+  .btn:before,
+  .btn:after {
+    position: absolute;
+    content: '';
+    right: 0;
+    top: 0;
+    background: var(--white);
+    transition: all 0.3s ease;
+  }
+  .btn:before {
+    height: 0%;
+    width: 2px;
+  }
+  .btn:after {
+    width: 0%;
+    height: 2px;
+  }
+  
+  .btn:hover:before {
+    height: 100%;
+  }
+  .btn:hover:after {
+    width: 100%;
+  }
+  .btn span:hover {
+    color: var(--main-color);
+  }
+  .btn span:before,
+  .btn span:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    background: var(--white);
+    transition: all 0.3s ease;
+  }
+  .btn span:before {
+    width: 2px;
+    height: 0%;
+  }
+  .btn span:after {
+    width: 0%;
+    height: 2px;
+  }
+  .btn span:hover:before {
+    height: 100%;
+  }
+  .btn span:hover:after {
+    width: 100%;
+  }
+  
+  /* hälsa användaren välkommen */
+  
+  .greeting-text,
+  #greet-user {
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: var(--font-size-large);
+    font-weight: 900;
+    color: var(--white);
+    -webkit-text-fill-color: var(--transparent);
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: var(--white);
+  }
+  
+  #greet-user {
+    margin-bottom: 1em;
+    margin-top: 1em;
+  }
+  
+  #greet-user .name-input {
+    overflow-wrap: break-word;
+    -webkit-text-fill-color: var(--transparent);
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: var(--main-color);
+  }
+  
+  .name-input {
+    animation: fadeIn 8s;
+    opacity: 1;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* hand animationen */
+  
+  .wave {
+    animation-name: wave-animation;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    transform-origin: 70% 70%;
+    display: inline-block;
+    width: 15%;
+    margin-top: -2em;
+  }
+  
+  @keyframes wave-animation {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(14deg);
+    }
+    20% {
+      transform: rotate(-8deg);
+    }
+    30% {
+      transform: rotate(14deg);
+    }
+    40% {
+      transform: rotate(-4deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    60% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  
+  /* bubblor animation */
+  
+  .modals.active .modal-drop {
+    -webkit-transform-origin: 50%;
+    transform-origin: 50%;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  
+  .modals.active .modal-content {
+    opacity: 1;
+    -webkit-transition: 0.5s ease-in 1.5s;
+    transition: 0.5s ease-in 1.5s;
+  }
+  
+  .modal-drop {
+    background: var(--white);
+    border-radius: 50%;
+    width: 150vh;
+    height: 150vh;
+    position: absolute;
+    margin-left: -75vh;
+    margin-top: -75vh;
+    -webkit-transition: -webkit-transform 6s cubic-bezier(0.25, 1, 0.6, 1),
+      -webkit-transform-origin 0s;
+    transition: -webkit-transform 6s cubic-bezier(0.25, 1, 0.6, 1),
+      -webkit-transform-origin 0s;
+    transition: transform 6s cubic-bezier(0.25, 1, 0.6, 1), transform-origin 0s;
+    transition: transform 6s cubic-bezier(0.25, 1, 0.6, 1), transform-origin 0s,
+      -webkit-transform 6s cubic-bezier(0.25, 1, 0.6, 1),
+      -webkit-transform-origin 0s;
+    -webkit-transform: scale(0.001);
+    transform: scale(0.001);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+  }
+  
+  /* slutsidan med bild */
+  
+  .modal-content {
+    background: var(--white);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+    -webkit-transition: 0.5s 0s;
+    transition: 0.5s 0s;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+  
+  .modal-wrap {
+    text-align: center;
+  }
+  .hands {
+    width: 60%;
+  }
+  
+  .hands-two{
+      width: 50%;  
+  }
+  
+  /* för mobil */
+  
+  @media only screen and (max-width: 600px) {
+    .card,
+    .nextmodal {
+      margin: 1em;
+      padding: 2em;
+    }
+  
+    .hands, .hands-two {
+      width: 90%;
+    }
+  
+    .wave {
+      margin-top: 0em;
+    }
+  }
+  
+  
