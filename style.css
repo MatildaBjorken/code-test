@@ -203,7 +203,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
-    display: flex;
+    display: block;
     outline: none;
   }
   
