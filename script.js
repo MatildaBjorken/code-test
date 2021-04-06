@@ -9,7 +9,7 @@ const saveData = function () {
     .getElementById('name')
     .value.toLowerCase()
     .trim()
-    .replace(/\d+/g, '');
+    .replace(/[^a-zA-Z ]/g, "");
 
   if (names.length == 0) {
     names.push('Hejpa', 'Dejpa');

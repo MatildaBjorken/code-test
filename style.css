@@ -1,5 +1,5 @@
 :root {
-    --main-color: #f4887c;
+    --main-color: #6e76e1;
     --white: white;
     --transparent: transparent;
     --font-size-small: 0.7rem;
@@ -20,6 +20,7 @@
   }
   
   body {
+    background-color: #6e76e1;
     background-blend-mode: screen;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -32,103 +33,13 @@
     justify-content: center;
   }
 
-  /* bakgrunds animation */
-
-  .bg-animation, .bg-animation > div {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-  }
-  
-  .bg-animation > div {
-    will-change: opacity;
-  }
-  
-  .bg-animation .bg-1 {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(60%, #f4887c), to(#7DC680));
-    background: linear-gradient(180deg, #f4887c 60%, #7DC680 100%);
-  }
-  
-  .bg-animation .bg-2 {
-    background: linear-gradient(300deg, #bab2fc 60%, #7DC680 100%);
-    -webkit-animation: bg-fade-1 6s linear infinite;
-            animation: bg-fade-1 6s linear infinite;
-  }
-  
-  .bg-animation .bg-3 {
-    background: linear-gradient(10deg, #bab2fc 60%, #7DC680 100%);
-    -webkit-animation: bg-fade-2 6s linear infinite;
-            animation: bg-fade-2 6s linear infinite;
-  }
-  
-  @-webkit-keyframes bg-fade-1 {
-    0% {
-      opacity: 1;
-    }
-    33% {
-      opacity: 1;
-    }
-    66% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-  
-  @keyframes bg-fade-1 {
-    0% {
-      opacity: 1;
-    }
-    33% {
-      opacity: 1;
-    }
-    66% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-  
-  @-webkit-keyframes bg-fade-2 {
-    0% {
-      opacity: 1;
-    }
-    33% {
-      opacity: 0;
-    }
-    66% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes bg-fade-2 {
-    0% {
-      opacity: 1;
-    }
-    33% {
-      opacity: 0;
-    }
-    66% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
   a,
   button:focus {
     outline: none;
   }
   
   .card {
-    width: 500px;
+    min-width: 500px;
     min-height: 350px;
   }
   
@@ -181,6 +92,7 @@
     width: 100%;
     border: none;
     outline: none;
+    border-radius: none;
     padding: 5px 5px;
     border-bottom: 2px solid var(--white);
     box-shadow: none;
