@@ -1,11 +1,15 @@
 //spara i localstorage
 
-names = JSON.parse(localStorage.getItem('locname') || '[]');
+let names = JSON.parse(localStorage.getItem('storedNames') || '[]');
 
 const saveData = function () {
   const greetUser = document.getElementById('greet-user');
   const showImage = document.querySelector('.modal-wrap');
-  let data = document.getElementById('name').value.toLowerCase();
+  let data = document
+    .getElementById('name')
+    .value.toLowerCase()
+    .trim()
+    .replace(/\d+/g, '');
 
   if (names.length == 0) {
     names.push('Hejpa', 'Dejpa');
@@ -27,27 +31,29 @@ const saveData = function () {
     greetUser.innerHTML = `välkommen tillbaka <span class="name-input ">${data}</span>`;
     modalBtn.style.visibility = 'visible';
     showImage.innerHTML =
-      '<img src="./images/vi-mots-igen.png" alt="bild av händer" class="hands-two">';
+      '<img src="./images/vi-mots-igen.png" alt="bild av händer som gör en high-five" class="hands-two">';
   } else {
     names.push(data);
     greetUser.innerHTML = `välkommen <span class="name-input" class="hands">${data}</span>`;
     modalBtn.style.visibility = 'visible';
     showImage.innerHTML =
-      '<img src="./images/trevligt-att-traffas.png" alt="bild av händer" class="hands">';
+      '<img src="./images/trevligt-att-traffas.png" alt="bild av händer som hälsar" class="hands">';
   }
-  localStorage.setItem('locname', JSON.stringify(names));
+  localStorage.setItem('storedNames', JSON.stringify(names));
 };
 
-const submitName = document.querySelector('.submit');
-submitName.onclick = saveData;
+const form = document.querySelector('form');
 
 //localStorage.clear();
 
-//visa användaren och dölj den första modalen
+//visa användaren, dölj den första modalen och anropa saveData functionen
 
-submitName.addEventListener('click', function () {
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  console.log(form.name.value);
   document.querySelector('.nextmodal').style.display = 'block';
   document.querySelector('.card').style.display = 'none';
+  saveData()
 });
 
 const GoBack = document.querySelector('.go-back');
@@ -59,13 +65,13 @@ GoBack.addEventListener('click', function () {
 
 //visa bubblorna
 
-var num = 20;
-var modalBtn = document.querySelector('.open');
-var modalContainer = document.querySelector('.modals');
-var holdModals = document.createDocumentFragment();
+let num = 20;
+let modalBtn = document.querySelector('.open');
+let modalContainer = document.querySelector('.modals');
+let holdModals = document.createDocumentFragment();
 
 for (var i = 0; i < num; i++) {
-  var div = document.createElement('div');
+  let div = document.createElement('div');
   div.classList.add('modal-drop');
   div.style.top = Math.floor(Math.random() * 100) + 'vh';
   div.style.left = Math.floor(Math.random() * 100) + 'vw';
@@ -84,4 +90,3 @@ modalBtn.addEventListener('click', function () {
     modalContainer.classList.add('active');
   }, 100);
 });
-
